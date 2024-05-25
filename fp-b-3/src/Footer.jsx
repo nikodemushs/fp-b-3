@@ -10,7 +10,6 @@ import NavbarLogoBiru from "./Navbar2";
 function Footer() {
   return (
     <div>
-      <NavbarLogoPutih />
       <footer class="bg-white dark:bg-gray-900">
         <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
           <div class="flex-col gap-y-4 sm:flex sm:flex-row sm:justify-between sm:gap-x-20 ">
