@@ -132,7 +132,7 @@ function NavbarLogoPutih() {
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="sm:flex sm:gap-4">
+            <div className="hidden md:flex md:gap-4">
               <a
                 className="  px-5 py-2.5 transition text-base font-medium text-white hover:shadow rounded-xl hover:bg-gray-400"
                 href="#"
@@ -140,7 +140,7 @@ function NavbarLogoPutih() {
                 Sign In
               </a>
 
-              <div className="hidden sm:flex">
+              <div className="hidden md:flex">
                 <a
                   className="rounded-xl bg-[#2A91E5] px-5 py-2.5 transition text-base font-medium text-white hover:bg-sky-700 hover:shadow"
                   href="#"
@@ -172,6 +172,12 @@ function NavbarLogoPutih() {
               </button>
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                  <a
+                    href="#"
+                    className="block rounded-md  px-4 py-2 text-[#333333]/60 hover:bg-gray-300 hover:text-[#333333] font-semibold"
+                  >
+                    Sign In
+                  </a>
                   <a
                     href="#"
                     className="block rounded-md  px-4 py-2 text-[#333333]/60 hover:bg-gray-300 hover:text-[#333333] font-semibold"
