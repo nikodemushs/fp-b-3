@@ -1,17 +1,19 @@
-import {
-  FaLinkedinIn,
-  FaFacebookF,
-  FaTwitter,
-  FaArrowRight,
-} from "react-icons/fa";
+import React, { useState } from "react";
 
-function Footer() {
+function NavbarLogoPutih() {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
-    <footer class="bg-white dark:bg-gray-900">
-      <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
-        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          <div>
-            <div class="flex justify-center text-teal-600 sm:justify-start dark:text-teal-300">
+    <div className="fixed top-0 left-0 right-0 z-50 mx-auto max-w-screen-xl my-4 bg-white/30 rounded-xl shadow-lg">
+      <div className="px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between max-w-screen-xl">
+          <div className="md:flex md:items-center md:gap-12">
+            <a className="block " href="#">
+              <span className="sr-only">Home</span>
               <svg
                 width="246"
                 height="35"
@@ -80,243 +82,134 @@ function Footer() {
                   fill="white"
                 />
               </svg>
-            </div>
-
-            <p class="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left dark:text-gray-400">
-              Hello, we are Lift Media. Our goal is to translate the positive
-              effects from revolutionizing how companies engage with their
-              clients & their team.
-            </p>
-
-            <ul class="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
-              <li className="border rounded-full">
-                <a
-                  href="#"
-                  className="linkedInIcon"
-                  style={{
-                    padding: "10px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <FaLinkedinIn size={20} color={"white"} />
-                  <span className="sr-only">LinkedIn</span>
-                </a>
-              </li>
-              <li className="border rounded-full">
-                <a
-                  href="#"
-                  className="facebookIcon"
-                  style={{
-                    padding: "10px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <FaFacebookF size={20} color={"white"} />
-                  <span className="sr-only">Facebook</span>
-                </a>
-              </li>
-              <li className="border rounded-full">
-                <a
-                  href="#"
-                  className="twitterIcon"
-                  style={{
-                    padding: "10px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <FaTwitter size={20} color={"white"} />
-                  <span className="sr-only">Twitter</span>
-                </a>
-              </li>
-            </ul>
+            </a>
           </div>
 
-          <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
-            <div class="text-center sm:text-left">
-              <p class="text-lg font-medium text-gray-900 dark:text-white">
-                Product{" "}
-              </p>
-
-              <ul class="mt-8 space-y-4 text-sm">
+          <div className="hidden md:block">
+            <nav aria-label="Global">
+              <ul className="flex items-center gap-10 text-base ">
                 <li>
                   <a
-                    class="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
+                    className="text-white/60 transition hover:text-white font-semibold"
                     href="#"
                   >
-                    About
+                    {" "}
+                    Home{" "}
                   </a>
                 </li>
 
                 <li>
                   <a
-                    class="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
+                    className="text-white/60 transition hover:text-white font-semibold"
                     href="#"
                   >
-                    Career
+                    {" "}
+                    Tujuan Terbaik{" "}
                   </a>
                 </li>
 
                 <li>
                   <a
-                    class="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
+                    className="text-white/60 transition hover:text-white font-semibold"
                     href="#"
                   >
-                    Blog
+                    {" "}
+                    Promo{" "}
                   </a>
                 </li>
 
                 <li>
                   <a
-                    class="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
+                    className="text-white/60 transition hover:text-white font-semibold"
                     href="#"
                   >
-                    Special Offers
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div class="text-center sm:text-left">
-              <p class="text-lg font-medium text-gray-900 dark:text-white">
-                Help
-              </p>
-
-              <ul class="mt-8 space-y-4 text-sm">
-                <li>
-                  <a
-                    class="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    FAQ
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    Help Center
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    Privacy Policy
+                    {" "}
+                    Mengapa Kami{" "}
                   </a>
                 </li>
               </ul>
-            </div>
+            </nav>
+          </div>
 
-            <div class="text-center sm:text-left">
-              <p class="text-lg font-medium text-gray-900 dark:text-white">
-                Partner
-              </p>
+          <div className="flex items-center gap-4">
+            <div className="sm:flex sm:gap-4">
+              <a
+                className="  px-5 py-2.5 transition text-base font-medium text-white hover:shadow rounded-xl hover:bg-gray-400"
+                href="#"
+              >
+                Sign In
+              </a>
 
-              <ul class="mt-8 space-y-4 text-sm">
-                <li>
-                  <a
-                    class="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    Partner Hub
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    Affiliates
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
-                    href="#"
-                  >
-                    Advertise
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div class="text-center sm:text-left ">
-              <p class="text-lg font-medium text-gray-900 dark:text-white">
-                Subscribe
-              </p>
-
-              <div class="mx-auto mt-8 max-w-md sm:ms-0">
-                <form class="mt-4">
-                  <div className="relative">
-                    <div className="flex flex-col gap-4 sm:flex-row lg:flex-col lg:items-start">
-                      <label htmlFor="email" className="sr-only">
-                        Email
-                      </label>
-                      <div className="flex rounded-lg border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-                        <input
-                          className="flex-grow rounded-l-lg bg-transparent px-6 py-3 text-gray-900 dark:text-white"
-                          type="email"
-                          placeholder="Enter your email"
-                          id="email"
-                        />
-                        <button
-                          className="rounded-r-lg bg-sky-500 px-6 py-3 font-medium text-white transition hover:bg-indigo-600"
-                          type="submit"
-                        >
-                          <FaArrowRight />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-                <p class="leading-relaxed text-gray-500 ltr:sm:text-left rtl:sm:text-right dark:text-gray-400 mt-4">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Earum id, iure consectetur et error hic!
-                </p>
+              <div className="hidden sm:flex">
+                <a
+                  className="rounded-xl bg-[#2A91E5] px-5 py-2.5 transition text-base font-medium text-white hover:bg-sky-700 hover:shadow"
+                  href="#"
+                >
+                  Sign Up
+                </a>
               </div>
             </div>
+
+            <div className="block md:hidden">
+              <button
+                onClick={handleDropdownToggle}
+                className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+              {isDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                  <a
+                    href="#"
+                    className="block rounded-md  px-4 py-2 text-[#333333]/60 hover:bg-gray-300 hover:text-[#333333] font-semibold"
+                  >
+                    Sign Up
+                  </a>
+                  <a
+                    href="#"
+                    className="block rounded-md  px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800 font-semibold"
+                  >
+                    Home
+                  </a>
+                  <a
+                    href="#"
+                    className="block rounded-md  px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800 font-semibold"
+                  >
+                    Tujuan Terbaik
+                  </a>
+                  <a
+                    href="#"
+                    className="block rounded-md  px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800 font-semibold"
+                  >
+                    Promo
+                  </a>
+                  <a
+                    href="#"
+                    className="block rounded-md  px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800 font-semibold"
+                  >
+                    Mengapa Kami
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-
-        <div class="mt-8 border-t border-gray-600 pt-8">
-          <ul class="flex flex-wrap justify-center gap-4 text-xs">
-            <li>
-              <a href="#" class="text-white transition hover:opacity-75">
-                {" "}
-                Terms & Conditions{" "}
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="text-white transition hover:opacity-75">
-                {" "}
-                Privacy Policy{" "}
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="text-white transition hover:opacity-75">
-                {" "}
-                Cookies{" "}
-              </a>
-            </li>
-          </ul>
-        </div>
       </div>
-    </footer>
+    </div>
   );
 }
 
-export default Footer;
+export default NavbarLogoPutih;
