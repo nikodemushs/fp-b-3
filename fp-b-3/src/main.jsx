@@ -9,6 +9,6 @@ import ConfirmEmail from "./pages/ConfirmEmail.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ConfirmEmail />
+    <Register />
   </React.StrictMode>
 );

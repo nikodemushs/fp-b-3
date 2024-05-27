@@ -3,6 +3,7 @@ import mascot from "../assets/mascot.png";
 import logo from "../assets/weblogo.png";
 import bg from "../assets/bg.png";
 import bgresp from "../assets/bgresp.png";
+import Footer from "../components/Footer";
 
 export default function Register() {
   const [firstName, setFirstName] = useState("");
@@ -28,7 +29,7 @@ export default function Register() {
         <div className="max-w-md w-full bg-white shadow-lg rounded-xl p-10">
           <div className="text-center">
             <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              Register
+              Selamat Datang Di
             </h2>
             <img className="mx-auto h-16 w-auto" src={logo} alt="Logo" />
           </div>
@@ -169,6 +170,7 @@ export default function Register() {
           alt="Mascot"
         />
       </div>
+      <Footer />
     </div>
   );
 }
