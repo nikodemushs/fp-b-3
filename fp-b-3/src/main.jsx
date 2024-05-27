@@ -5,6 +5,10 @@ import Footer from "./Footer.jsx";
 import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+<<<<<<< Updated upstream
     <Footer />
+=======
+    <Login />
+>>>>>>> Stashed changes
   </React.StrictMode>
 );
