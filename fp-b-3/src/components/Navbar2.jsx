@@ -8,9 +8,9 @@ function NavbarLogoBiru() {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 mx-auto max-w-screen-xl my-4 bg-white/30 rounded-xl shadow-lg">
+    <div className="fixed top-0 left-0 right-0 z-50 mx-auto max-w-screen-2xl my-4 bg-white/30 rounded-xl shadow-lg">
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between max-w-screen-xl">
+        <div className="flex h-16 items-center justify-between max-w-screen-2xl">
           <div className="md:flex md:items-center md:gap-12">
             <a className="block " href="#">
               <span className="sr-only">Home</span>
@@ -214,6 +214,7 @@ function NavbarLogoBiru() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

@@ -13,7 +13,7 @@ const GoogleMaps = ({ latitude, longitude }) => {
 
   return (
     <Fragment>
-      <div style={{ height: "300px", width: "400px" }}>
+      <div style={{ height: "20vh", width: "30vh" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyAOCgj-boqDL7xGJCRANYAZasOa9bY96AM" }}
           defaultCenter={{ lat: -6.125556, lng: 106.65583 }}

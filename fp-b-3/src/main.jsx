@@ -11,6 +11,6 @@ import Search from "./pages/Search.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Search />
+    <Login />
   </React.StrictMode>
 );
