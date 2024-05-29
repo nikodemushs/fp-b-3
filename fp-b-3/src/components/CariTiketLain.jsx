@@ -3,9 +3,15 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { GiAirplaneDeparture, GiAirplaneArrival } from "react-icons/gi";
 import { SlCalender } from "react-icons/sl";
+import { id } from "date-fns/locale";
+import { useDispatch, useSelector } from "react-redux";
+import { setDepartureDate } from "../redux/reducers/dataReducer";
 
 export default function CariTiketLain() {
-  const [departureDate, setDepartureDate] = useState(new Date());
+  const dispatch = useDispatch();
+  const departureDate = useSelector((state) => state.data.departureDate);
+
+  // const [departureDate, setDepartureDate] = useState(new Date());
   const [returnDate, setReturnDate] = useState(new Date());
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -17,7 +23,7 @@ export default function CariTiketLain() {
   const returnDateRef = useRef(null);
 
   return (
-    <div className="mx-auto max-w-screen-xl flex justify-between items-center bg-white rounded-xl shadow-lg">
+    <div className="mx-auto max-w-screen-2xl flex justify-between items-center bg-white rounded-xl shadow-lg">
       <div className="flex items-center p-8">
         <div className="block sm:hidden pr-5 absolute sm:justify-start">
           <button
@@ -57,6 +63,7 @@ export default function CariTiketLain() {
                   selected={departureDate}
                   onChange={(date) => setDepartureDate(date)}
                   dateFormat="EEE, d MMM yyyy"
+                  locale={id}
                   className="cursor-pointer text-[#0C68BE]"
                   ref={departureDateRef}
                 />
@@ -77,6 +84,7 @@ export default function CariTiketLain() {
                   selected={returnDate}
                   onChange={(date) => setReturnDate(date)}
                   dateFormat="EEE, d MMM yyyy"
+                  locale={id}
                   className="cursor-pointer text-[#0C68BE]"
                   ref={returnDateRef}
                 />
@@ -108,9 +116,9 @@ export default function CariTiketLain() {
                 className="block rounded-md  px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800 font-semibold sm:hidden"
               >
                 <div className="flex items-center gap-x-2 px-">
-                  <div className="text">1 passengers</div>
+                  <div className="text">1 penumpang</div>
                   <div className=""> |</div>
-                  <div>Economy</div>
+                  <div>Ekonomi</div>
                 </div>
               </a>
             </div>
@@ -132,8 +140,8 @@ export default function CariTiketLain() {
             </div>
           </div>
           <div className="flex items-center gap-x-2 ">
-            <div>1 passengers</div>
-            <div className=""> | Economy</div>
+            <div>1 penumpang</div>
+            <div className=""> | Ekonomi</div>
           </div>
         </div>
 
@@ -149,8 +157,12 @@ export default function CariTiketLain() {
           </div>
           <DatePicker
             selected={departureDate}
-            onChange={(date) => setDepartureDate(date)}
+            onChange={(date) => {
+              dispatch(setDepartureDate(date));
+              console.log("date :>> ", typeof date);
+            }}
             dateFormat="EEE, d MMM yyyy"
+            locale={id}
             className="cursor-pointer text-[#0C68BE]"
             ref={departureDateRef}
           />
@@ -169,6 +181,7 @@ export default function CariTiketLain() {
             selected={returnDate}
             onChange={(date) => setReturnDate(date)}
             dateFormat="EEE, d MMM yyyy"
+            locale={id}
             className="cursor-pointer text-[#0C68BE]"
             ref={returnDateRef}
           />
@@ -213,6 +226,7 @@ export default function CariTiketLain() {
                   selected={departureDate}
                   onChange={(date) => setDepartureDate(date)}
                   dateFormat="EEE, d MMM yyyy"
+                  locale={id}
                   className="cursor-pointer text-[#0C68BE]"
                   ref={departureDateRef}
                 />
@@ -233,6 +247,7 @@ export default function CariTiketLain() {
                   selected={returnDate}
                   onChange={(date) => setReturnDate(date)}
                   dateFormat="EEE, d MMM yyyy"
+                  locale={id}
                   className="cursor-pointer text-[#0C68BE]"
                   ref={returnDateRef}
                 />
@@ -264,9 +279,9 @@ export default function CariTiketLain() {
                 className="block rounded-md  px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800 font-semibold sm:hidden"
               >
                 <div className="flex items-center gap-x-2 px-">
-                  <div className="text">1 passengers</div>
+                  <div className="text">1 penumpang</div>
                   <div className=""> |</div>
-                  <div>Economy</div>
+                  <div>Ekonomi</div>
                 </div>
               </a>
             </div>

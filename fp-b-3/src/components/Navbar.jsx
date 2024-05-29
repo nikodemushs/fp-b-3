@@ -91,7 +91,7 @@ function NavbarLogoPutih() {
                 <li>
                   <a
                     className="text-white/60 transition hover:text-white font-semibold"
-                    href="#"
+                    href="/search"
                   >
                     {" "}
                     Home{" "}
@@ -135,7 +135,7 @@ function NavbarLogoPutih() {
             <div className="hidden md:flex md:gap-4">
               <a
                 className="  px-5 py-2.5 transition text-base font-medium text-white hover:shadow rounded-xl hover:bg-gray-400"
-                href="#"
+                href="/"
               >
                 Sign In
               </a>
@@ -143,7 +143,7 @@ function NavbarLogoPutih() {
               <div className="hidden md:flex">
                 <a
                   className="rounded-xl bg-[#2A91E5] px-5 py-2.5 transition text-base font-medium text-white hover:bg-sky-700 hover:shadow"
-                  href="#"
+                  href="/register"
                 >
                   Sign Up
                 </a>

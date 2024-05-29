@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function NavbarLogoBiru() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -6,6 +7,8 @@ function NavbarLogoBiru() {
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+  const cekState = useSelector((state) => state);
+  console.log("cekState :>> ", cekState);
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 mx-auto max-w-screen-2xl my-4 bg-white/30 rounded-xl shadow-lg">
@@ -91,7 +94,7 @@ function NavbarLogoBiru() {
                 <li>
                   <a
                     className="text-[#333333]/60 transition hover:text-[#333333] font-semibold"
-                    href="#"
+                    href="/search"
                   >
                     {" "}
                     Home{" "}
@@ -135,17 +138,17 @@ function NavbarLogoBiru() {
             <div className="hidden md:flex md:gap-4">
               <a
                 className="  px-5 py-2.5 transition text-base font-medium text-[#333333] hover:shadow rounded-xl hover:bg-gray-200"
-                href="#"
+                href="/"
               >
-                Sign In
+                Masuk
               </a>
 
               <div className="hidden md:flex">
                 <a
                   className="rounded-xl bg-[#2A91E5] px-5 py-2.5 transition text-base font-medium text-white hover:bg-sky-700 hover:shadow"
-                  href="#"
+                  href="/register"
                 >
-                  Sign Up
+                  Daftar
                 </a>
               </div>
             </div>
@@ -176,13 +179,13 @@ function NavbarLogoBiru() {
                     href="#"
                     className="block rounded-md  px-4 py-2 text-[#333333]/60 hover:bg-gray-300 hover:text-[#333333] font-semibold"
                   >
-                    Sign In
+                    Masuk
                   </a>
                   <a
                     href="#"
                     className="block rounded-md  px-4 py-2 text-[#333333]/60 hover:bg-gray-300 hover:text-[#333333] font-semibold"
                   >
-                    Sign Up
+                    Daftar
                   </a>
                   <a
                     href="#"
@@ -214,7 +217,6 @@ function NavbarLogoBiru() {
           </div>
         </div>
       </div>
-      
     </div>
   );
 }
