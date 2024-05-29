@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   departureAirport: null,
   arrivalAirport: null,
-  departureDate: "",
+  departureDate: null,
   returnDate: null,
   penumpang: null,
-  class: null,
+  class: "",
   type: null,
 };
 
@@ -15,26 +15,26 @@ const dataSlicer = createSlice({
   initialState,
   reducers: {
     setDepartureAirport: (state, action) => {
-      state.heroes = action.payload;
+      state.departureAirport = action.payload;
     },
     setArrivalAirport: (state, action) => {
-      state.heroes = action.payload;
+      state.arrivalAirport = action.payload;
     },
     setDepartureDate: (state, action) => {
       console.log("action :>> ", action);
       state.departureDate = action.payload;
     },
     setReturnDate: (state, action) => {
-      state.heroes = action.payload;
+      state.returnDate = action.payload;
     },
     setPenumpang: (state, action) => {
-      state.heroes = action.payload;
+      state.penumpang = action.payload;
     },
     setClass: (state, action) => {
-      state.heroes = action.payload;
+      state.class = action.payload;
     },
     setType: (state, action) => {
-      state.heroes = action.payload;
+      state.type = action.payload;
     },
   },
 });

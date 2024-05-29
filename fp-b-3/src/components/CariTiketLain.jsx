@@ -5,18 +5,29 @@ import { GiAirplaneDeparture, GiAirplaneArrival } from "react-icons/gi";
 import { SlCalender } from "react-icons/sl";
 import { id } from "date-fns/locale";
 import { useDispatch, useSelector } from "react-redux";
-import { setDepartureDate } from "../redux/reducers/dataReducer";
+import {
+  setDepartureDate,
+  setReturnDate,
+  setClass,
+  setPenumpang,
+} from "../redux/reducers/dataReducer";
 
 export default function CariTiketLain() {
   const dispatch = useDispatch();
   const departureDate = useSelector((state) => state.data.departureDate);
+  const returnDate = useSelector((state) => state.data.returnDate);
+  const seatClass = useSelector((state) => state?.data?.class);
 
   // const [departureDate, setDepartureDate] = useState(new Date());
-  const [returnDate, setReturnDate] = useState(new Date());
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleDropdownToggle2 = () => {
+    setIsDropdownOpen2(!isDropdownOpen2);
   };
 
   const departureDateRef = useRef(null);
@@ -46,10 +57,10 @@ export default function CariTiketLain() {
             </svg>
           </button>
           {isDropdownOpen && (
-            <div className="absolute  mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+            <div className="absolute  mt-2 w-64 bg-white border border-gray-200 rounded-md shadow-lg z-10">
               <a
                 href="#"
-                className="block rounded-md  px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800 font-semibold"
+                className="block rounded-md  px-4 py-2 text-gray-800/60  hover:text-gray-800 font-semibold"
               >
                 <div className="flex items-center gap-x-2 ">
                   <div className="cursor-pointer">
@@ -61,7 +72,7 @@ export default function CariTiketLain() {
                 </div>
                 <DatePicker
                   selected={departureDate}
-                  onChange={(date) => setDepartureDate(date)}
+                  onChange={(date) => dispatch(setDepartureDate(date))}
                   dateFormat="EEE, d MMM yyyy"
                   locale={id}
                   className="cursor-pointer text-[#0C68BE]"
@@ -70,7 +81,7 @@ export default function CariTiketLain() {
               </a>
               <a
                 href="#"
-                className="block rounded-md  px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800 font-semibold"
+                className="block rounded-md  px-4 py-2 text-gray-800/60  hover:text-gray-800 font-semibold"
               >
                 <div className="flex items-center gap-x-2 ">
                   <div className="cursor-pointer ">
@@ -82,7 +93,7 @@ export default function CariTiketLain() {
                 </div>
                 <DatePicker
                   selected={returnDate}
-                  onChange={(date) => setReturnDate(date)}
+                  onChange={(date) => dispatch(setReturnDate(date))}
                   dateFormat="EEE, d MMM yyyy"
                   locale={id}
                   className="cursor-pointer text-[#0C68BE]"
@@ -116,9 +127,83 @@ export default function CariTiketLain() {
                 className="block rounded-md  px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800 font-semibold sm:hidden"
               >
                 <div className="flex items-center gap-x-2 px-">
-                  <div className="text">1 penumpang</div>
+                  <div>
+                    <input
+                      type="number"
+                      id="JumlahPenumpang"
+                      placeholder="n/a"
+                      className="w-7 rounded-md py-1  border-gray-200 shadow-sm"
+                      onChange={(e) => dispatch(setPenumpang(e.target.value))}
+                    />
+                    <span>Penumpang</span>
+                  </div>
                   <div className=""> |</div>
-                  <div>Ekonomi</div>
+                  <div
+                    className="flex items-center gap-2 cursor-pointer"
+                    onClick={handleDropdownToggle2}
+                  >
+                    <div>{`${seatClass}`} </div>
+                    <span
+                      className={`transition ${
+                        isDropdownOpen2 ? "rotate-180" : ""
+                      }`}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="h-4 w-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  {isDropdownOpen2 && (
+                    <div className="absolute mt-36 ml-28 w-32 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                      <a
+                        href="#"
+                        className="block rounded-md px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800"
+                        onClick={() => {
+                          dispatch(setClass("Eksekutif"));
+                          setIsDropdownOpen2(false);
+                        }}
+                      >
+                        <div className="flex items-center gap-x-2">
+                          <div className="font-">Eksekutif</div>
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        className="block rounded-md px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800"
+                        onClick={() => {
+                          dispatch(setClass("Bisnis"));
+                          setIsDropdownOpen2(false);
+                        }}
+                      >
+                        <div className="flex items-center gap-x-2">
+                          <div className="font-">Bisnis</div>
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        className="block rounded-md px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800"
+                        onClick={() => {
+                          dispatch(setClass("Ekonomi"));
+                          setIsDropdownOpen2(false);
+                        }}
+                      >
+                        <div className="flex items-center gap-x-2">
+                          <div className="font-">Ekonomi</div>
+                        </div>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </a>
             </div>
@@ -140,8 +225,81 @@ export default function CariTiketLain() {
             </div>
           </div>
           <div className="flex items-center gap-x-2 ">
-            <div>1 penumpang</div>
-            <div className=""> | Ekonomi</div>
+            <div>
+              <input
+                type="number"
+                id="JumlahPenumpang"
+                placeholder="n/a"
+                className="w-7 rounded-md py-1  border-gray-200 shadow-sm"
+                onChange={(e) => dispatch(setPenumpang(e.target.value))}
+              />
+              <span>Penumpang</span>
+            </div>
+            <div>|</div>
+            <div
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={handleDropdownToggle2}
+            >
+              <div>{`${seatClass}`} </div>
+              <span
+                className={`transition ${isDropdownOpen2 ? "rotate-180" : ""}`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="h-4 w-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </span>
+            </div>
+            {isDropdownOpen2 && (
+              <div className="absolute mt-36 ml-28 w-28 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                <a
+                  href="#"
+                  className="block rounded-md px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800"
+                  onClick={() => {
+                    dispatch(setClass("Eksekutif"));
+                    setIsDropdownOpen2(false);
+                  }}
+                >
+                  <div className="flex items-center gap-x-2">
+                    <div className="font-">Eksekutif</div>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  className="block rounded-md px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800"
+                  onClick={() => {
+                    dispatch(setClass("Bisnis"));
+                    setIsDropdownOpen2(false);
+                  }}
+                >
+                  <div className="flex items-center gap-x-2">
+                    <div className="font-">Bisnis</div>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  className="block rounded-md px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800"
+                  onClick={() => {
+                    dispatch(setClass("Ekonomi"));
+                    setIsDropdownOpen2(false);
+                  }}
+                >
+                  <div className="flex items-center gap-x-2">
+                    <div className="font-">Ekonomi</div>
+                  </div>
+                </a>
+              </div>
+            )}
           </div>
         </div>
 
@@ -179,7 +337,7 @@ export default function CariTiketLain() {
           </div>
           <DatePicker
             selected={returnDate}
-            onChange={(date) => setReturnDate(date)}
+            onChange={(date) => dispatch(setReturnDate(date))}
             dateFormat="EEE, d MMM yyyy"
             locale={id}
             className="cursor-pointer text-[#0C68BE]"
@@ -212,7 +370,7 @@ export default function CariTiketLain() {
             <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
               <a
                 href="#"
-                className="block rounded-md  px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800 font-semibold"
+                className="block rounded-md  px-4 py-2 text-gray-800/60  hover:text-gray-800 font-semibold"
               >
                 <div className="flex items-center gap-x-2 ">
                   <div className="cursor-pointer">
@@ -224,7 +382,7 @@ export default function CariTiketLain() {
                 </div>
                 <DatePicker
                   selected={departureDate}
-                  onChange={(date) => setDepartureDate(date)}
+                  onChange={(date) => dispatch(setDepartureDate(date))}
                   dateFormat="EEE, d MMM yyyy"
                   locale={id}
                   className="cursor-pointer text-[#0C68BE]"
@@ -233,7 +391,7 @@ export default function CariTiketLain() {
               </a>
               <a
                 href="#"
-                className="block rounded-md  px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800 font-semibold"
+                className="block rounded-md  px-4 py-2 text-gray-800/60  hover:text-gray-800 font-semibold"
               >
                 <div className="flex items-center gap-x-2 ">
                   <div className="cursor-pointer ">
@@ -245,7 +403,7 @@ export default function CariTiketLain() {
                 </div>
                 <DatePicker
                   selected={returnDate}
-                  onChange={(date) => setReturnDate(date)}
+                  onChange={(date) => dispatch(setReturnDate(date))}
                   dateFormat="EEE, d MMM yyyy"
                   locale={id}
                   className="cursor-pointer text-[#0C68BE]"
@@ -281,7 +439,49 @@ export default function CariTiketLain() {
                 <div className="flex items-center gap-x-2 px-">
                   <div className="text">1 penumpang</div>
                   <div className=""> |</div>
-                  <div>Ekonomi</div>
+                  <div className="" onClick={handleDropdownToggle2}>
+                    {`${seatClass}`}
+                  </div>
+                  {isDropdownOpen2 && (
+                    <div className="absolute mt-36 ml-28 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                      <a
+                        href="#"
+                        className="block rounded-md px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800"
+                        onClick={() => {
+                          dispatch(setClass("Eksekutif"));
+                          setIsDropdownOpen2(false);
+                        }}
+                      >
+                        <div className="flex items-center gap-x-2">
+                          <div className="font-">Eksekutif</div>
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        className="block rounded-md px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800"
+                        onClick={() => {
+                          dispatch(setClass("Bisnis"));
+                          setIsDropdownOpen2(false);
+                        }}
+                      >
+                        <div className="flex items-center gap-x-2">
+                          <div className="font-">Bisnis</div>
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        className="block rounded-md px-4 py-2 text-gray-800/60 hover:bg-gray-300 hover:text-gray-800"
+                        onClick={() => {
+                          dispatch(setClass("Ekonomi"));
+                          setIsDropdownOpen2(false);
+                        }}
+                      >
+                        <div className="flex items-center gap-x-2">
+                          <div className="font-">Ekonomi</div>
+                        </div>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </a>
             </div>
